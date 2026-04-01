@@ -1,0 +1,6 @@
+@KpopCardTracker_HostAddress = http://localhost:5145
+
+GET {{KpopCardTracker_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

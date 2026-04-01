@@ -1,0 +1,36 @@
+# ── Dependencies ────────────────────────────────────────────────────────────────
+node_modules/
+
+# ── Backend build & runtime ──────────────────────────────────────────────────────
+backend/bin/
+backend/obj/
+backend/*.db
+backend/*.db-shm
+backend/*.db-wal
+backend/wwwroot/images/*
+!backend/wwwroot/images/.gitkeep
+
+# ── Frontend build ───────────────────────────────────────────────────────────────
+frontend/dist/
+frontend/.env.local
+
+# ── Environment / secrets ────────────────────────────────────────────────────────
+.env.local
+.env.*.local
+
+# ── IDE & editor ────────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ── OS ───────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ── Logs ────────────────────────────────────────────────────────────────────────
+*.log
+npm-debug.log*
