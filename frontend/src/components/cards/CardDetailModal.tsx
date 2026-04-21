@@ -3,6 +3,7 @@ import { CheckCircle2, Star, Pencil, Trash2, X, Loader2 } from "lucide-react";
 import type { CardDetail, Tag, TagType } from "../../types";
 import { getCard, updateCard, deleteCard } from "../../api/cards";
 import { getTags, getTagTypes, createTag } from "../../api/tags";
+import { STATIC_MODE } from "../../api/client";
 import { getImageUrl, cn } from "../../lib/utils";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import { Badge } from "../ui/badge";
@@ -198,15 +199,17 @@ export function CardDetailModal({
                       ))}
                     </div>
 
-                    <div className="flex gap-2 pt-2">
-                      <Button size="sm" variant="outline" onClick={() => setEditing(true)}>
-                        <Pencil className="h-3.5 w-3.5 mr-1" /> Edit
-                      </Button>
-                      <Button size="sm" variant="destructive" onClick={handleDelete} disabled={deleting}>
-                        {deleting ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Trash2 className="h-3.5 w-3.5 mr-1" />}
-                        Delete
-                      </Button>
-                    </div>
+                    {!STATIC_MODE && (
+                      <div className="flex gap-2 pt-2">
+                        <Button size="sm" variant="outline" onClick={() => setEditing(true)}>
+                          <Pencil className="h-3.5 w-3.5 mr-1" /> Edit
+                        </Button>
+                        <Button size="sm" variant="destructive" onClick={handleDelete} disabled={deleting}>
+                          {deleting ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Trash2 className="h-3.5 w-3.5 mr-1" />}
+                          Delete
+                        </Button>
+                      </div>
+                    )}
                   </>
                 ) : (
                   <>

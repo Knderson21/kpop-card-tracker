@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:pages": "tsc -b && VITE_STATIC_MODE=true VITE_BASE_PATH=/kpop-card-tracker/ vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "export-demo": "node scripts/export-demo.mjs"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.3.3",
