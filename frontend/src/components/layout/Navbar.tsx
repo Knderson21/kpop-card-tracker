@@ -8,7 +8,7 @@ export function Navbar() {
     <header className="sticky top-0 z-40 border-b border-border bg-card/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-screen-xl items-center justify-between px-4">
         <Link to="/" className="flex items-center" aria-label="KPop Collect home">
-          <img src="/KPopCollectLogo.svg" alt="KPop Collect" className="h-12 w-auto" />
+          <img src="/KPOPCollect_HorizontalLogo.svg" alt="KPop Collect" className="h-10 w-auto" />
         </Link>
         <nav className="flex items-center gap-1">
           <Link
