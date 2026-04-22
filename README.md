@@ -4,13 +4,14 @@ A web app for cataloging and tracking K-pop trading card (photocard) collections
 
 ## Features
 
+- Welcome / landing page explaining the app, how to upload, about-the-author, and future goals
 - Browse a gallery of card images in a uniform grid
 - Tag cards with structured metadata: group, member, album, album version, year, card number, and custom tag types
 - Filter by any combination of tags; search across tag names and notes
 - Mark cards as **Collected** or **Wishlist**
 - Upload single cards with a cropping tool (locked to the standard 55×85mm photocard ratio)
 - Bulk import cards via a zip of images + JSON manifest
-- Mobile-friendly and desktop layouts
+- Mobile-friendly and desktop layouts (responsive navbar adapts from phone to tablet to desktop)
 
 ## Tech Stack
 
@@ -71,11 +72,22 @@ To import multiple cards at once, upload a `.zip` of images alongside a `.json` 
 ]
 ```
 
+## Routes
+
+| Path | Page |
+|---|---|
+| `/` | Welcome / landing page |
+| `/gallery` | Card gallery (browse, filter, search, collect, wishlist) |
+| `/admin` | Single-card upload + bulk import |
+
 ## Roadmap
 
 - **Phase 2** — Host on Azure (App Service + PostgreSQL + Blob Storage)
 - **Phase 3** — Google Auth + user accounts with personal collected/wishlist lists
+  - Multiple named, customizable wishlists per user (e.g., per group/member, "grails", commons/trade bait)
+  - Public profiles with bio and social links
 - **Phase 4** — Community card submissions with admin approval queue
+  - Browse and comment on other collectors' public wishlists to coordinate trades
 
 ## Documentation
 
