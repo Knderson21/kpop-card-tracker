@@ -9,7 +9,7 @@ export function WelcomePage() {
       {/* Hero */}
       <section className="flex flex-col items-center text-center">
         <img
-          src="/KPopCollectLogo.svg"
+          src={`${import.meta.env.BASE_URL}KPopCollectLogo.svg`}
           alt="KPop Collect"
           className="h-28 w-auto sm:h-36 mb-6"
         />
