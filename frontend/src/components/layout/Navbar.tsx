@@ -39,17 +39,15 @@ export function Navbar() {
           >
             Gallery
           </Link>
-          {!STATIC_MODE && (
-            <Link
-              to="/admin"
-              className={cn(
-                "rounded-md px-2 py-1.5 text-sm font-medium transition-colors sm:px-3",
-                pathname === "/admin" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-accent"
-              )}
-            >
-              Admin
-            </Link>
-          )}
+          <Link
+            to="/admin"
+            className={cn(
+              "rounded-md px-2 py-1.5 text-sm font-medium transition-colors sm:px-3",
+              pathname === "/admin" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-accent"
+            )}
+          >
+            Admin
+          </Link>
         </nav>
       </div>
     </header>

@@ -3,7 +3,6 @@ import { Navbar } from "./components/layout/Navbar";
 import { WelcomePage } from "./pages/WelcomePage";
 import { GalleryPage } from "./pages/GalleryPage";
 import { AdminPage } from "./pages/AdminPage";
-import { STATIC_MODE } from "./api/client";
 
 function App() {
   const basename = import.meta.env.BASE_URL.replace(/\/$/, "") || "/";
@@ -15,7 +14,7 @@ function App() {
           <Routes>
             <Route path="/" element={<WelcomePage />} />
             <Route path="/gallery" element={<GalleryPage />} />
-            {!STATIC_MODE && <Route path="/admin" element={<AdminPage />} />}
+            <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </main>
       </div>

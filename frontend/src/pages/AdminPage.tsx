@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Upload, FolderArchive } from "lucide-react";
+import { Upload, FolderArchive, Info } from "lucide-react";
 import { AdminUploadForm } from "../components/admin/AdminUploadForm";
 import { BulkImportPanel } from "../components/admin/BulkImportPanel";
+import { STATIC_MODE } from "../api/client";
 import { cn } from "../lib/utils";
 
 type Tab = "single" | "bulk";
@@ -19,7 +20,19 @@ export function AdminPage() {
         <p className="text-sm text-muted-foreground mt-1">Add cards to the database individually or in bulk.</p>
       </div>
 
-      {/* Tabs */}
+      {STATIC_MODE && (
+        <div className="flex gap-3 rounded-md border border-accent/50 bg-accent/20 p-3 text-sm">
+          <Info className="h-5 w-5 shrink-0 text-accent-foreground" />
+          <div>
+            <p className="font-medium text-foreground">Demo mode — admin is read-only</p>
+            <p className="mt-0.5 text-muted-foreground">
+              This is a static preview. Upload and import actions are disabled, but you can browse the interface to see how it works.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Tabs — always interactive so users can switch between them in the demo */}
       <div className="flex gap-1 border-b border-border">
         <button
           onClick={() => setTab("single")}
@@ -41,8 +54,10 @@ export function AdminPage() {
         </button>
       </div>
 
-      {tab === "single" && <AdminUploadForm key={refreshKey} onSuccess={handleSuccess} />}
-      {tab === "bulk" && <BulkImportPanel onSuccess={handleSuccess} />}
+      <fieldset disabled={STATIC_MODE} className={cn(STATIC_MODE && "opacity-60")}>
+        {tab === "single" && <AdminUploadForm key={refreshKey} onSuccess={handleSuccess} />}
+        {tab === "bulk" && <BulkImportPanel onSuccess={handleSuccess} />}
+      </fieldset>
     </div>
   );
 }
