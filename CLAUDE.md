@@ -16,6 +16,9 @@ A web app for cataloging and tracking K-pop trading card collections with flexib
 - Host on Azure; allow friends to create user profiles via Google Auth
 - Community card submission with an approval queue
 - Multi-user collection/wishlist tracking in the database
+- Multiple named, customizable wishlists per user (e.g., one per group or member, a "grails" list for rare/expensive cards, a "commons" or "trade bait" list)
+- Public user profiles with personal bio and links to other social media accounts
+- Social features: view other users' public wishlists and leave comments (e.g., to offer a card for trade)
 
 ---
 
@@ -137,11 +140,11 @@ kpop-card-tracker/
 │   │   │   ├── cards/          ← CardGrid, CardTile, CardDetailModal
 │   │   │   ├── filters/        ← FilterSidebar
 │   │   │   ├── admin/          ← AdminUploadForm, BulkImportPanel
-│   │   │   ├── layout/         ← Navbar
+│   │   │   ├── layout/         ← Navbar (responsive: mobile / tablet / desktop)
 │   │   │   └── ui/             ← shadcn-style primitives (Button, Input, Dialog, Badge)
 │   │   ├── hooks/              ← useCollection (localStorage)
 │   │   ├── lib/                ← utils (cn, getImageUrl)
-│   │   ├── pages/              ← GalleryPage, AdminPage
+│   │   ├── pages/              ← WelcomePage, GalleryPage, AdminPage
 │   │   └── types/              ← TypeScript interfaces
 └── backend/                    ← C# .NET 8 Minimal API
     ├── Data/                   ← AppDbContext, EF migrations
@@ -182,9 +185,20 @@ npm run dev
 
 ---
 
+## Frontend Routes
+
+| Path | Component | Purpose |
+|---|---|---|
+| `/` | `WelcomePage` | Landing page: app intro, how-it-works, upload walkthrough, about-the-author, future-goals |
+| `/gallery` | `GalleryPage` | Browse, filter, search, collect, wishlist |
+| `/admin` | `AdminPage` | Single-card upload + bulk import |
+
+The `Navbar` (in `components/layout/Navbar.tsx`) is shared across all routes and highlights the active link. It is responsive: on small phones the logo uses `max-h-8` with a flex-1 container so it can't overlap the nav buttons, and the nav links use tighter padding below the `sm:` breakpoint.
+
 ## Roadmap
 
 ### Phase 1 — MVP (current)
+- [x] Welcome / landing page at `/`
 - [x] Card gallery with uniform grid
 - [x] Tag-based filtering (multi-filter, any combination)
 - [x] Full-text search
@@ -192,7 +206,7 @@ npm run dev
 - [x] Collected/Wishlist tracking via localStorage
 - [x] Admin: single card upload with image + tag picker
 - [x] Admin: bulk import via zip + JSON manifest
-- [x] Mobile-responsive layout
+- [x] Mobile-responsive layout (phone, tablet, desktop)
 
 ### Phase 2 — Hosting
 - [ ] Migrate SQLite → Azure PostgreSQL
@@ -205,8 +219,12 @@ npm run dev
 - [ ] Google OAuth integration
 - [ ] User profiles: collected / wishlist stored in DB per user
 - [ ] Migrate localStorage data to DB on first login
+- [ ] Multiple named, customizable wishlists per user (per group/member, "grails", commons, etc.)
+- [ ] Public profile page with personal bio and links to other social media accounts
 
 ### Phase 4 — Community
 - [ ] Card submission form (upload + tags) for community members
 - [ ] Admin approval queue for submitted cards
 - [ ] User-facing browse of pending/approved submissions
+- [ ] Browse other users' public wishlists
+- [ ] Comment on other users' wishlists (e.g., to coordinate trades when you own a card they want)

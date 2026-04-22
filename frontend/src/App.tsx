@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/layout/Navbar";
+import { WelcomePage } from "./pages/WelcomePage";
 import { GalleryPage } from "./pages/GalleryPage";
 import { AdminPage } from "./pages/AdminPage";
 
@@ -10,7 +11,8 @@ function App() {
         <Navbar />
         <main>
           <Routes>
-            <Route path="/" element={<GalleryPage />} />
+            <Route path="/" element={<WelcomePage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </main>
