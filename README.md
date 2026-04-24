@@ -2,6 +2,8 @@
 
 A web app for cataloging and tracking K-pop trading card (photocard) collections with flexible tagging, filtering, and search.
 
+Live demo can be viewed here: [KPop Collect](https://knderson21.github.io/kpop-card-tracker)
+
 ## Features
 
 - Welcome / landing page explaining the app, how to upload, about-the-author, and future goals
